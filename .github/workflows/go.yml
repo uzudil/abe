@@ -15,7 +15,7 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v1.9
       with:
         cmake-version: '3.16.x'
-    - name: Check out code into the Go module directory
+    - name: Check out game source
       uses: actions/checkout@v2
     - name: Get dependencies
       run: |
@@ -45,10 +45,11 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v1.9
       with:
         cmake-version: '3.16.x'
-    - name: Check out code into the Go module directory
+    - name: Check out game source
       uses: actions/checkout@v2
     - name: Build
       run: |
+        choco install wget
         wget https://github.com/libsdl-org/SDL-1.2/archive/refs/heads/main.zip
         gunzip main.zip
         ls -al main
