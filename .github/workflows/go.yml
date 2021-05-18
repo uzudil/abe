@@ -1,0 +1,63 @@
+name: Go
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-mac:
+    name: Build for Mac
+    runs-on: macos-latest
+    steps:
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.9
+      with:
+        cmake-version: '3.16.x'
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+    - name: Get dependencies
+      run: |
+        brew install sdl sdl_mixer        
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+        cmake ../src/
+        cmake --build
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: abe.mac
+        path: build/abe
+        
+
+  build-win:
+    name: Build for Windows
+    runs-on: windows-latest
+    steps:
+    - name: Set up MinGW
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: x64
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.9
+      with:
+        cmake-version: '3.16.x'
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+    - name: Build
+      run: |
+        wget https://github.com/libsdl-org/SDL-1.2/archive/refs/heads/main.zip
+        gunzip main.zip
+        ls -al main
+        mkdir build
+        cd build
+        cmake ..\src
+        cmake --build
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: abe.win
+        path: build\abe.EXE
