@@ -50,9 +50,9 @@ jobs:
     - name: Build
       run: |
         choco install wget
-        wget https://github.com/libsdl-org/SDL-1.2/archive/refs/heads/main.zip
+        wget -q https://github.com/libsdl-org/SDL-1.2/archive/refs/heads/main.zip
         gunzip main.zip
-        ls -al main
+        dir main
         mkdir build
         cd build
         cmake ..\src
