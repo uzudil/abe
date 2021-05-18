@@ -65,6 +65,3 @@ S - save map
 esc - quit
 q,w - make a slide (q-top left, w-bottom right)
 q,e - make a rectangle
-
-
-Test
