@@ -49,10 +49,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Build
       run: |
-        choco --no-progress install wget
-        wget -q https://github.com/libsdl-org/SDL-1.2/archive/refs/heads/main.zip
-        tar -xf main.zip
-        dir main
+        tar -xf sdl-1.2.zip
+        dir sdl-1.2
         mkdir build
         cd build
         cmake ..\src
