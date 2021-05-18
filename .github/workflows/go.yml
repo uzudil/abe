@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Get dependencies
       run: |
-        brew install sdl sdl_mixer        
+        brew install cmake sdl sdl_mixer        
     - name: Build
       run: |
         mkdir build
