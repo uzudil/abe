@@ -1,0 +1,25 @@
+import os, re, imp
+
+Import('env')
+
+if GetOption('win64'):
+    from utils import win_build as c
+else:
+    from utils import linux_build as c
+
+c.cppflags.extend(['-O0', '-g'])
+c.cppflags.extend(['-Wall', '-Wextra'])
+
+target   = '#/bin/abe' + c.targetSuffix
+cppFiles = [Glob('*.c') +
+            Glob('*/*.c') +
+            Glob('*/*/*.c')]
+
+app = env.Program(target, cppFiles,
+                  LIBPATH   = c.libpaths,
+                  CPPPATH   = c.sourcepaths,
+                  CPPFLAGS  = c.cppflags,
+                  LINKFLAGS = c.linkflags,
+                  LIBS      = c.libs)
+Default(app)
+
