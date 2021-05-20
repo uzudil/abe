@@ -1,0 +1,7 @@
+The purpose of this directory is to cross-compile a 64bit exe for windows. 
+Since I don't have access to a windows build machine, I run the mingw gcc 
+compiler on ubuntu to produce the windows exe.
+
+Notes:
+- sdl_mixer_makefile.in removes the steps to build two executables which failed 
+under cross compilation

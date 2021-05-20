@@ -10,10 +10,18 @@ AddOption('--win64',
           help='cross-compiles for windows',
           default=False)
 
+AddOption('--macos',
+          action='store_true',
+          help='build for the mac',
+          default=False)
+
 # If SCons was called with '--win64'
 if GetOption('win64'):
     env['CC']='x86_64-w64-mingw32-gcc'
     vardir='build/win'
+elif GetOption('macos'):
+    env['CC']='gcc'
+    vardir='build/macos'
 else:
     env['CC']='gcc'
     vardir='build/linux'

@@ -4,6 +4,8 @@ Import('env')
 
 if GetOption('win64'):
     from utils import win_build as c
+elif GetOption('macos'):
+    from utils import macos_build as c
 else:
     from utils import linux_build as c
 

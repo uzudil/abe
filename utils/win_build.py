@@ -5,7 +5,6 @@ cross_prefix = "/cross-tools/x86_64-w64-mingw32"
 sdl_libs = ['mingw32', 'SDLmain', 'SDL_mixer', 'SDL']
 
  # vorbisfile, vorbis, and ogg, are required by SDL_mixer
- # jpeg, png, and z, are required by SDL_image
 other_libs = ['vorbisfile', 'vorbis', 'ogg',
               'm', 'dinput8', 'dxguid', 'dxerr8', 'user32',
               'gdi32', 'winmm', 'imm32', 'ole32', 'oleaut32',

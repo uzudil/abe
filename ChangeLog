@@ -1,3 +1,8 @@
+2021-05-19  moved to github
+
+    * scons build files
+    * docker-based mingw build for win64
+    
 2004-07-19  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* Makefile.am (SUBDIRS): Add m4.

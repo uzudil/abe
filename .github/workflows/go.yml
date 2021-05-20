@@ -31,32 +31,3 @@ jobs:
       with:
         name: abe.mac
         path: build/abe
-        
-
-  build-win:
-    name: Build for Windows
-    runs-on: windows-latest
-    steps:
-    - name: Set up MinGW
-      uses: egor-tensin/setup-mingw@v2
-      with:
-        platform: x64
-    - name: Setup cmake
-      uses: jwlawson/actions-setup-cmake@v1.9
-      with:
-        cmake-version: '3.16.x'
-    - name: Check out game source
-      uses: actions/checkout@v2
-    - name: Build
-      run: |
-        tar -xf sdl-1.2.zip
-        dir sdl-1.2
-        mkdir build
-        cd build
-        cmake ..\src
-        cmake --build
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: abe.win
-        path: build\abe.EXE
